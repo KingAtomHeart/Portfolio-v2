@@ -431,33 +431,33 @@ document.addEventListener('DOMContentLoaded', () => {
 // contact
 
 // Initialize EmailJS
-emailjs.init('YOUR_PUBLIC_KEY'); // Replace with your public key
+// emailjs.init('YOUR_PUBLIC_KEY'); // Replace with your public key
 
-// Handle form submission
-document.querySelector('.contact-form').addEventListener('submit', function(e) {
-    e.preventDefault();
+// // Handle form submission
+// document.querySelector('.contact-form').addEventListener('submit', function(e) {
+//     e.preventDefault();
     
-    const form = e.target;
-    const formData = new FormData(form);
+//     const form = e.target;
+//     const formData = new FormData(form);
     
-    // Show loading state
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Sending...';
-    submitBtn.disabled = true;
+//     // Show loading state
+//     const submitBtn = form.querySelector('button[type="submit"]');
+//     const originalText = submitBtn.textContent;
+//     submitBtn.textContent = 'Sending...';
+//     submitBtn.disabled = true;
     
-    // Send email
-    emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form)
-        .then(() => {
-            alert('Message sent successfully!');
-            form.reset();
-        })
-        .catch((error) => {
-            alert('Failed to send message. Please try again.');
-            console.error('EmailJS error:', error);
-        })
-        .finally(() => {
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-        });
-});
+//     // Send email
+//     emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form)
+//         .then(() => {
+//             alert('Message sent successfully!');
+//             form.reset();
+//         })
+//         .catch((error) => {
+//             alert('Failed to send message. Please try again.');
+//             console.error('EmailJS error:', error);
+//         })
+//         .finally(() => {
+//             submitBtn.textContent = originalText;
+//             submitBtn.disabled = false;
+//         });
+// });
