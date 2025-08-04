@@ -1,6 +1,6 @@
 // Typing Animation
 const typingElement = document.getElementById('typingSpan');
-const roles = ['Business Analyst', 'Developer', 'UI/UX Designer', 'Full Stack Developer', 'Mobile Developer', 'Problem Solver'];
+const roles = ['Business Analyst', 'Developer', 'UI/UX Designer', 'Full Stack Developer', 'Problem Solver'];
 let currentRole = 0;
 let currentChar = 0;
 let isDeleting = false;
