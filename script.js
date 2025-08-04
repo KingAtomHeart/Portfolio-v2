@@ -6,6 +6,8 @@ let currentChar = 0;
 let isDeleting = false;
 
 function typeEffect() {
+    if (!typingElement) return;
+    
     const currentText = roles[currentRole];
     
     if (isDeleting) {
@@ -37,26 +39,34 @@ const menuToggle = document.getElementById('menuToggle');
 const nav = document.getElementById('nav');
 const navLinks = document.querySelectorAll('.nav-link');
 
-menuToggle.addEventListener('click', () => {
-    nav.classList.toggle('active');
-    const icon = menuToggle.querySelector('i');
-    
-    if (nav.classList.contains('active')) {
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-times');
-    } else {
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-    }
-});
+if (menuToggle && nav) {
+    menuToggle.addEventListener('click', () => {
+        nav.classList.toggle('active');
+        const icon = menuToggle.querySelector('i');
+        
+        if (icon) {
+            if (nav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+    });
+}
 
 // Close mobile menu when clicking on a link
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
-        nav.classList.remove('active');
-        const icon = menuToggle.querySelector('i');
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
+        if (nav) {
+            nav.classList.remove('active');
+            const icon = menuToggle?.querySelector('i');
+            if (icon) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
     });
 });
 
@@ -68,7 +78,8 @@ navLinks.forEach(link => {
         const targetSection = document.querySelector(targetId);
         
         if (targetSection) {
-            const headerHeight = document.getElementById('header').offsetHeight;
+            const header = document.getElementById('header');
+            const headerHeight = header ? header.offsetHeight : 0;
             const targetPosition = targetSection.offsetTop - headerHeight;
             
             window.scrollTo({
@@ -83,9 +94,11 @@ navLinks.forEach(link => {
 const scrollProgress = document.querySelector('.scroll-progress');
 
 function updateScrollProgress() {
+    if (!scrollProgress) return;
+    
     const scrollTop = window.pageYOffset;
     const docHeight = document.body.scrollHeight - window.innerHeight;
-    const scrollPercent = (scrollTop / docHeight) * 100;
+    const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
     scrollProgress.style.width = scrollPercent + '%';
 }
 
@@ -93,6 +106,8 @@ function updateScrollProgress() {
 const header = document.getElementById('header');
 
 function updateHeaderOnScroll() {
+    if (!header) return;
+    
     if (window.scrollY > 100) {
         header.classList.add('scrolled');
     } else {
@@ -124,6 +139,8 @@ function updateActiveNavLink() {
 // Animated Background Particles
 function createParticles() {
     const bgAnimation = document.getElementById('bgAnimation');
+    if (!bgAnimation) return;
+    
     const particleCount = 50;
     
     for (let i = 0; i < particleCount; i++) {
@@ -174,50 +191,61 @@ function initScrollAnimations() {
     });
 }
 
-
-// minigame ==================================================
-
-
-
 // Contact Form Handling
-const contactForm = document.querySelector('.contact-form');
+function initContactForm() {
+    const contactForm = document.querySelector('.contact-form');
+    if (!contactForm) return;
 
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    // Get form data
-    const formData = new FormData(contactForm);
-    const name = contactForm.querySelector('input[placeholder="Your Name"]').value;
-    const email = contactForm.querySelector('input[placeholder="Your Email"]').value;
-    const subject = contactForm.querySelector('input[placeholder="Subject"]').value;
-    const message = contactForm.querySelector('textarea[placeholder="Your Message"]').value;
-    
-    // Simple validation
-    if (!name || !email || !subject || !message) {
-        showNotification('Please fill in all fields', 'error');
-        return;
-    }
-    
-    if (!isValidEmail(email)) {
-        showNotification('Please enter a valid email address', 'error');
-        return;
-    }
-    
-    // Simulate form submission
-    const submitButton = contactForm.querySelector('.btn');
-    const originalText = submitButton.textContent;
-    
-    submitButton.textContent = 'Sending...';
-    submitButton.disabled = true;
-    
-    // Simulate API call
-    setTimeout(() => {
-        showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
-        contactForm.reset();
-        submitButton.textContent = originalText;
-        submitButton.disabled = false;
-    }, 2000);
-});
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Get form fields
+        const nameField = contactForm.querySelector('input[placeholder="Your Name"]');
+        const emailField = contactForm.querySelector('input[placeholder="Your Email"]');
+        const subjectField = contactForm.querySelector('input[placeholder="Subject"]');
+        const messageField = contactForm.querySelector('textarea[placeholder="Your Message"]');
+        
+        if (!nameField || !emailField || !subjectField || !messageField) {
+            showNotification('Form fields not found', 'error');
+            return;
+        }
+        
+        const name = nameField.value.trim();
+        const email = emailField.value.trim();
+        const subject = subjectField.value.trim();
+        const message = messageField.value.trim();
+        
+        // Simple validation
+        if (!name || !email || !subject || !message) {
+            showNotification('Please fill in all fields', 'error');
+            return;
+        }
+        
+        if (!isValidEmail(email)) {
+            showNotification('Please enter a valid email address', 'error');
+            return;
+        }
+        
+        // Simulate form submission
+        const submitButton = contactForm.querySelector('.btn, button[type="submit"]');
+        if (!submitButton) {
+            showNotification('Submit button not found', 'error');
+            return;
+        }
+        
+        const originalText = submitButton.textContent;
+        submitButton.textContent = 'Sending...';
+        submitButton.disabled = true;
+        
+        // Simulate API call
+        setTimeout(() => {
+            showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
+            contactForm.reset();
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
+        }, 2000);
+    });
+}
 
 // Email validation helper
 function isValidEmail(email) {
@@ -239,11 +267,14 @@ function showNotification(message, type = 'info') {
     notification.textContent = message;
     
     // Add styles
+    const backgroundColor = type === 'success' ? '#4CAF50' : 
+                           type === 'error' ? '#f44336' : '#2196F3';
+    
     notification.style.cssText = `
         position: fixed;
         top: 100px;
         right: 20px;
-        background: ${type === 'success' ? '#4CAF50' : type === 'error' ? '#f44336' : '#2196F3'};
+        background: ${backgroundColor};
         color: white;
         padding: 15px 25px;
         border-radius: 10px;
@@ -291,58 +322,69 @@ function initSkillEffects() {
     });
 }
 
-// Initialize everything when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    // Start typing animation
-    setTimeout(typeEffect, 1000);
+// Theme Toggle Functionality
+function initThemeToggle() {
+    const themeToggle = document.getElementById('themeToggle');
+    const root = document.documentElement;
     
-    // Create background particles
-    createParticles();
+    if (!themeToggle) return;
     
-    // Initialize scroll animations
-    initScrollAnimations();
+    // Check for saved theme preference or default to 'dark'
+    // Note: localStorage is not available in Claude.ai artifacts
+    // For production use, uncomment the localStorage lines
+    // const currentTheme = localStorage.getItem('theme') || 'dark';
+    const currentTheme = 'dark'; // Default theme for artifact
     
-    // Initialize skill effects
-    initSkillEffects();
-    
-    // Add scroll listeners
-    window.addEventListener('scroll', () => {
-        updateScrollProgress();
-        updateHeaderOnScroll();
-        updateActiveNavLink();
-        animateOnScroll();
-    });
-    
-    // Trigger initial scroll functions
-    updateScrollProgress();
-    updateHeaderOnScroll();
-    updateActiveNavLink();
-    animateOnScroll();
-});
-
-// Smooth page load animation
-window.addEventListener('load', () => {
-    document.body.style.opacity = '1';
-    document.body.style.transform = 'translateY(0)';
-});
-
-// Add initial page load styles
-document.body.style.cssText += `
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-`;
-
-// Keyboard navigation support
-document.addEventListener('keydown', (e) => {
-    // ESC key closes mobile menu
-    if (e.key === 'Escape' && nav.classList.contains('active')) {
-        nav.classList.remove('active');
-        const icon = menuToggle.querySelector('i');
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
+    if (currentTheme === 'light') {
+        root.classList.add('light-mode');
     }
-});
+    
+    themeToggle.addEventListener('click', () => {
+        root.classList.toggle('light-mode');
+        
+        // Save theme preference (disabled for artifact)
+        // const theme = root.classList.contains('light-mode') ? 'light' : 'dark';
+        // localStorage.setItem('theme', theme);
+        
+        // Add click animation
+        themeToggle.style.transform = 'translateY(-50%) scale(0.95)';
+        setTimeout(() => {
+            themeToggle.style.transform = 'translateY(-50%) scale(1)';
+        }, 150);
+    });
+}
+
+// Add floating shapes to sections
+function addFloatingShapes() {
+    const sections = document.querySelectorAll('.services, .skills, .experience');
+    
+    sections.forEach(section => {
+        // Check if shapes already exist
+        if (section.querySelector('.floating-shapes')) return;
+        
+        const shapesContainer = document.createElement('div');
+        shapesContainer.classList.add('floating-shapes');
+        
+        for (let i = 0; i < 3; i++) {
+            const shape = document.createElement('div');
+            shape.classList.add('shape');
+            shapesContainer.appendChild(shape);
+        }
+        
+        section.appendChild(shapesContainer);
+    });
+}
+
+// Preloader handling
+function hidePreloader() {
+    const preloader = document.querySelector('.preloader');
+    if (preloader) {
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 500);
+    }
+}
 
 // Intersection Observer for better performance
 const observerOptions = {
@@ -359,105 +401,125 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe elements for animation
-document.addEventListener('DOMContentLoaded', () => {
-    const animatedElements = document.querySelectorAll('.service-card, .skill-category, .timeline-item');
-    animatedElements.forEach(el => observer.observe(el));
-});
-
-// Preloader (optional)
-function hidePreloader() {
-    const preloader = document.querySelector('.preloader');
-    if (preloader) {
-        preloader.style.opacity = '0';
-        setTimeout(() => {
-            preloader.style.display = 'none';
-        }, 500);
-    }
-}
-
-// Hide preloader when page loads
-window.addEventListener('load', hidePreloader);
-
-// experimental change
-// Theme Toggle Functionality
-const themeToggle = document.getElementById('themeToggle');
-const root = document.documentElement;
-
-// Check for saved theme preference or default to 'dark'
-const currentTheme = localStorage.getItem('theme') || 'dark';
-if (currentTheme === 'light') {
-    root.classList.add('light-mode');
-}
-
-themeToggle.addEventListener('click', () => {
-    root.classList.toggle('light-mode');
-    
-    // Save theme preference
-    const theme = root.classList.contains('light-mode') ? 'light' : 'dark';
-    localStorage.setItem('theme', theme);
-    
-    // Add click animation
-    themeToggle.style.transform = 'translateY(-50%) scale(0.95)';
-    setTimeout(() => {
-        themeToggle.style.transform = 'translateY(-50%) scale(1)';
-    }, 150);
-});
-
-// Add floating shapes to sections
-function addFloatingShapes() {
-    const sections = document.querySelectorAll('.services, .skills, .experience');
-    
-    sections.forEach(section => {
-        const shapesContainer = document.createElement('div');
-        shapesContainer.classList.add('floating-shapes');
-        
-        for (let i = 0; i < 3; i++) {
-            const shape = document.createElement('div');
-            shape.classList.add('shape');
-            shapesContainer.appendChild(shape);
+// Keyboard navigation support
+function initKeyboardNavigation() {
+    document.addEventListener('keydown', (e) => {
+        // ESC key closes mobile menu
+        if (e.key === 'Escape' && nav && nav.classList.contains('active')) {
+            nav.classList.remove('active');
+            const icon = menuToggle?.querySelector('i');
+            if (icon) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
         }
-        
-        section.appendChild(shapesContainer);
     });
 }
 
-// Initialize floating shapes
+// Initialize page load styles
+function initPageLoadStyles() {
+    document.body.style.cssText += `
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    `;
+}
+
+// Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize page load styles
+    initPageLoadStyles();
+    
+    // Start typing animation
+    setTimeout(typeEffect, 1000);
+    
+    // Create background particles
+    createParticles();
+    
+    // Initialize scroll animations
+    initScrollAnimations();
+    
+    // Initialize skill effects
+    initSkillEffects();
+    
+    // Initialize contact form
+    initContactForm();
+    
+    // Initialize theme toggle
+    initThemeToggle();
+    
+    // Add floating shapes
     addFloatingShapes();
-    // ... rest of your existing DOMContentLoaded code
+    
+    // Initialize keyboard navigation
+    initKeyboardNavigation();
+    
+    // Set up intersection observer
+    const animatedElements = document.querySelectorAll('.service-card, .skill-category, .timeline-item');
+    animatedElements.forEach(el => observer.observe(el));
+    
+    // Add scroll listeners
+    window.addEventListener('scroll', () => {
+        updateScrollProgress();
+        updateHeaderOnScroll();
+        updateActiveNavLink();
+        animateOnScroll();
+    });
+    
+    // Trigger initial scroll functions
+    updateScrollProgress();
+    updateHeaderOnScroll();
+    updateActiveNavLink();
+    animateOnScroll();
 });
 
-// contact
+// Handle page load completion
+window.addEventListener('load', () => {
+    // Smooth page load animation
+    document.body.style.opacity = '1';
+    document.body.style.transform = 'translateY(0)';
+    
+    // Hide preloader
+    hidePreloader();
+});
 
+// EmailJS Integration (commented out for artifact compatibility)
+/*
 // Initialize EmailJS
-// emailjs.init('YOUR_PUBLIC_KEY'); // Replace with your public key
+emailjs.init('YOUR_PUBLIC_KEY'); // Replace with your public key
 
-// // Handle form submission
-// document.querySelector('.contact-form').addEventListener('submit', function(e) {
-//     e.preventDefault();
+// Enhanced contact form with EmailJS
+function initEmailJS() {
+    const contactForm = document.querySelector('.contact-form');
+    if (!contactForm) return;
     
-//     const form = e.target;
-//     const formData = new FormData(form);
-    
-//     // Show loading state
-//     const submitBtn = form.querySelector('button[type="submit"]');
-//     const originalText = submitBtn.textContent;
-//     submitBtn.textContent = 'Sending...';
-//     submitBtn.disabled = true;
-    
-//     // Send email
-//     emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form)
-//         .then(() => {
-//             alert('Message sent successfully!');
-//             form.reset();
-//         })
-//         .catch((error) => {
-//             alert('Failed to send message. Please try again.');
-//             console.error('EmailJS error:', error);
-//         })
-//         .finally(() => {
-//             submitBtn.textContent = originalText;
-//             submitBtn.disabled = false;
-//         });
-// });
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const form = e.target;
+        const submitBtn = form.querySelector('button[type="submit"], .btn');
+        
+        if (!submitBtn) return;
+        
+        // Show loading state
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+        
+        // Send email
+        emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form)
+            .then(() => {
+                showNotification('Message sent successfully!', 'success');
+                form.reset();
+            })
+            .catch((error) => {
+                showNotification('Failed to send message. Please try again.', 'error');
+                console.error('EmailJS error:', error);
+            })
+            .finally(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
+    });
+}
+*/
