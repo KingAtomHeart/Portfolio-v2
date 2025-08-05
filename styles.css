@@ -472,7 +472,7 @@ section {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     border-radius: 50px;
     font-size: 1.6rem;
-    color: var(--text-light);
+    color: #ffffff;
     font-weight: 600;
     transition: var(--transition);
     cursor: pointer;
@@ -500,6 +500,7 @@ section {
 .btn:hover {
     transform: translateY(-8px);
     box-shadow: 0 15px 40px var(--accent-glow);
+    color: #ffffff;
 }
 
 /* Services Section */
