@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Résumé — Luis Bamba, Full-Stack Web Developer (MERN).">
+    <title>Luis Bamba — Résumé</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600&family=Inter:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --paper: #fdfbf7;
+            --card: #ffffff;
+            --ink: #241f1a;
+            --muted: #6f6558;
+            --accent: #a5673f;
+            --accent-2: #a8443f;
+            --line: rgba(60, 45, 32, 0.14);
+            --font-body: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+            --font-display: 'Fraunces', Georgia, serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--ink);
+            background: var(--paper);
+            line-height: 1.5;
+            font-size: 15px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .sheet {
+            max-width: 830px;
+            margin: 2.5rem auto;
+            background: var(--card);
+            padding: 3.2rem 3.4rem;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            box-shadow: 0 30px 60px -40px rgba(74, 52, 33, 0.4);
+        }
+
+        /* Header */
+        .r-header { border-bottom: 2px solid var(--line); padding-bottom: 1.5rem; margin-bottom: 1.6rem; }
+        .r-name {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 2.9rem;
+            line-height: 1.05;
+            letter-spacing: -0.01em;
+        }
+        .r-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 0.35rem;
+            letter-spacing: 0.01em;
+        }
+        .r-contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem 1.3rem;
+            margin-top: 1rem;
+            font-size: 0.86rem;
+            color: var(--muted);
+        }
+        .r-contact a, .r-contact span { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--muted); }
+        .r-contact a:hover { color: var(--accent); }
+        .r-contact i { color: var(--accent); font-size: 0.82rem; }
+
+        /* Sections */
+        .r-section { margin-top: 1.7rem; }
+        .r-section:first-of-type { margin-top: 0; }
+        .r-section h2 {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.15rem;
+            color: var(--ink);
+            padding-bottom: 0.35rem;
+            margin-bottom: 0.9rem;
+            border-bottom: 1px solid var(--line);
+            letter-spacing: 0.02em;
+        }
+
+        .r-summary { color: #332c25; font-size: 0.95rem; }
+
+        /* Skills */
+        .skill-line { display: grid; grid-template-columns: 11rem 1fr; gap: 0.6rem; padding: 0.28rem 0; font-size: 0.9rem; }
+        .skill-line + .skill-line { border-top: 1px dashed var(--line); }
+        .skill-cat { font-weight: 600; color: var(--accent); }
+        .skill-val { color: #33302b; }
+
+        /* Entries (projects / experience / education) */
+        .entry { margin-bottom: 1.05rem; page-break-inside: avoid; }
+        .entry:last-child { margin-bottom: 0; }
+        .entry-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+        .entry-title { font-weight: 600; font-size: 0.98rem; }
+        .entry-title .flag {
+            font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+            color: #fff; background: var(--accent); padding: 0.12rem 0.5rem; border-radius: 100px;
+            margin-left: 0.5rem; vertical-align: middle;
+        }
+        .entry-meta { font-size: 0.8rem; color: var(--muted); white-space: nowrap; }
+        .entry-sub { font-size: 0.85rem; color: var(--accent); font-weight: 500; margin-top: 0.05rem; }
+        .entry p { font-size: 0.9rem; color: #40382f; margin-top: 0.28rem; }
+        .entry ul { margin: 0.35rem 0 0 1.05rem; }
+        .entry ul li { font-size: 0.89rem; color: #40382f; margin-bottom: 0.18rem; }
+        .entry ul li strong { color: var(--ink); }
+        .entry-link { font-size: 0.8rem; }
+
+        .more-list { font-size: 0.88rem; color: #40382f; }
+        .more-list li { margin-bottom: 0.3rem; list-style: none; padding-left: 1rem; position: relative; }
+        .more-list li::before { content: '▸'; position: absolute; left: 0; color: var(--accent); }
+
+        .cw { display: grid; grid-template-columns: 12rem 1fr; gap: 0.5rem; font-size: 0.85rem; padding: 0.2rem 0; }
+        .cw-l { font-weight: 600; color: var(--accent); }
+        .cw-v { color: #40382f; }
+
+        /* Certifications */
+        .cert-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 1.6rem; }
+        .cert { font-size: 0.87rem; page-break-inside: avoid; }
+        .cert b { font-weight: 600; }
+        .cert span { color: var(--muted); }
+
+        /* Print button */
+        .print-bar { position: fixed; top: 1.2rem; right: 1.2rem; z-index: 10; }
+        .print-btn {
+            font-family: var(--font-body); font-size: 0.85rem; font-weight: 600;
+            color: #fff; background: var(--accent); border: none; cursor: pointer;
+            padding: 0.7rem 1.2rem; border-radius: 100px; display: inline-flex; align-items: center; gap: 0.5rem;
+            box-shadow: 0 10px 25px -12px var(--accent);
+        }
+        .print-btn:hover { filter: brightness(1.05); }
+        .back-link { display: inline-flex; align-items: center; gap: 0.4rem; margin-left: 0.6rem; font-size: 0.85rem; color: var(--muted); }
+
+        @media (max-width: 640px) {
+            .sheet { margin: 0; border-radius: 0; padding: 1.8rem 1.4rem; border: none; }
+            .skill-line, .cw { grid-template-columns: 1fr; gap: 0.15rem; }
+            .cert-list { grid-template-columns: 1fr; }
+            .print-bar { position: static; padding: 1rem 1.4rem 0; }
+        }
+
+        /* Print */
+        @media print {
+            @page { margin: 14mm; }
+            body { background: #fff; font-size: 10.5pt; }
+            .sheet { margin: 0; max-width: none; padding: 0; border: none; border-radius: 0; box-shadow: none; }
+            .print-bar { display: none; }
+            a { color: var(--ink); }
+            .r-contact a, .r-contact i, .skill-cat, .cw-l, .entry-sub { color: #000; }
+            .r-name, .r-section h2 { color: #000; }
+        }
+    </style>
+</head>
+<body>
+    <div class="print-bar">
+        <button class="print-btn" id="printBtn"><i class="fas fa-print" aria-hidden="true"></i> Print / Save as PDF</button>
+        <a class="back-link" href="index.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Portfolio</a>
+    </div>
+
+    <main class="sheet">
+        <header class="r-header">
+            <h1 class="r-name">Luis Bamba</h1>
+            <div class="r-title">Full-Stack Web Developer · MERN Stack</div>
+            <div class="r-contact">
+                <span><i class="fas fa-location-dot" aria-hidden="true"></i> Neepawa, Manitoba, Canada</span>
+                <a href="mailto:luisbamba02@gmail.com"><i class="fas fa-envelope" aria-hidden="true"></i> luisbamba02@gmail.com</a>
+                <a href="tel:+12044630174"><i class="fas fa-phone" aria-hidden="true"></i> +1 204 463 0174</a>
+                <a href="https://www.linkedin.com/in/luisbamba/" target="_blank" rel="noopener"><i class="fab fa-linkedin" aria-hidden="true"></i> /in/luisbamba</a>
+                <a href="https://github.com/KingAtomHeart" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i> KingAtomHeart</a>
+                <a href="https://kingatomheart.github.io/Portfolio-v2/" target="_blank" rel="noopener"><i class="fas fa-globe" aria-hidden="true"></i> Portfolio</a>
+            </div>
+        </header>
+
+        <section class="r-section">
+            <h2>Summary</h2>
+            <p class="r-summary">
+                Full-stack web developer specializing in the MERN stack (MongoDB, Express, React, Node). I build
+                responsive, accessible web applications end to end — from REST APIs and data models to polished
+                React interfaces — and bring an analytical, detail-first mindset from a background in process and
+                quality work. Zuitt-trained, AWS-certified, and shipping projects continuously.
+            </p>
+        </section>
+
+        <section class="r-section">
+            <h2>Technical Skills</h2>
+            <div class="skill-line"><span class="skill-cat">Front-End</span><span class="skill-val">HTML5, CSS3, JavaScript (ES6+), React.js, Responsive / Mobile-First, Bootstrap, Figma, Wireframing, CSS Animations &amp; Transitions, DOM Manipulation, ARIA Standards, Cross-Browser Compatibility, EmailJS</span></div>
+            <div class="skill-line"><span class="skill-cat">Back-End</span><span class="skill-val">Node.js, Express.js, Python, C#, ASP.NET, REST API Architecture, CRUD, Server-Side Routing, JWT Auth, Postman</span></div>
+            <div class="skill-line"><span class="skill-cat">Full-Stack</span><span class="skill-val">MERN Stack, Full-Stack Architecture, Component-Based Design, Data Flow Management, Cross-Functional Debugging, SDLC, Agile</span></div>
+            <div class="skill-line"><span class="skill-cat">Database &amp; Cloud</span><span class="skill-val">MongoDB (Mongoose), MySQL, DynamoDB, AWS (EC2, S3, Lambda, SNS, SQS)</span></div>
+            <div class="skill-line"><span class="skill-cat">Tools</span><span class="skill-val">Git, GitHub, Vercel, UiPath Studio, Trello, Alteryx, Fusion 360, Gamma, IntelliJ IDEA, HubSpot, Replit</span></div>
+            <div class="skill-line"><span class="skill-cat">Analysis &amp; Data</span><span class="skill-val">Requirements Gathering, Process Mapping, Gap Analysis, User Stories, Data Modeling, ETL, Dashboards</span></div>
+        </section>
+
+        <section class="r-section">
+            <h2>Selected Projects</h2>
+
+            <div class="entry">
+                <div class="entry-head">
+                    <span class="entry-title">OrigamiKeys — Full-Stack E-Commerce Platform<span class="flag">Flagship</span></span>
+                    <span class="entry-meta">Mar 2026 – Present</span>
+                </div>
+                <p>Full-stack e-commerce platform for a custom keyboard vendor (React, Node.js/Express, MongoDB/Mongoose). Site-wide theming system with four admin-selectable, server-persisted visual styles independent of each visitor's light/dark mode; a group-buy ordering flow; an admin dashboard with a drag-and-drop landing-page builder for products and categories; and a checkout/address-management system — built for accessible, theme-consistent UI.</p>
+                <span class="entry-link"><a href="https://origamikeyscom.vercel.app/" target="_blank" rel="noopener">origamikeyscom.vercel.app</a></span>
+            </div>
+
+            <div class="entry">
+                <div class="entry-head">
+                    <span class="entry-title">Mind Bloggling — MERN Blog Platform</span>
+                </div>
+                <p>Full-stack blog platform with full CRUD post management: a React, component-based front-end talking to an Express/Node REST API backed by MongoDB. Built and shipped with Postman, Vercel, and GitHub.</p>
+                <span class="entry-link"><a href="https://blog-app-client-opal.vercel.app/" target="_blank" rel="noopener">blog-app-client-opal.vercel.app</a></span>
+            </div>
+
+            <div class="entry">
+                <div class="entry-head">
+                    <span class="entry-title">Capstone 3 — Full-Stack E-Commerce (MERN)</span>
+                    <span class="entry-meta">Dec 2024</span>
+                </div>
+                <p>Full-stack MERN e-commerce platform: a React front-end with dynamic routing and state management, integrated APIs for server-side operations, deployed via AWS S3 static hosting.</p>
+            </div>
+
+            <div class="entry">
+                <div class="entry-head">
+                    <span class="entry-title">Capstone 2 — Back-End E-Commerce REST API</span>
+                    <span class="entry-meta">Nov 2024</span>
+                </div>
+                <p>Back-end RESTful API for an e-commerce workflow — efficient data handling, secure transactions, and clean integration points for the front-end.</p>
+                <span class="entry-link"><a href="https://tinyurl.com/ycy2sajm" target="_blank" rel="noopener">tinyurl.com/ycy2sajm</a></span>
+            </div>
+
+            <div class="entry">
+                <div class="entry-head">
+                    <span class="entry-title">Developer Portfolio — Front-End Capstone</span>
+                </div>
+                <p>Responsive personal portfolio with a dark/light theme toggle, animated UI, and an EmailJS-powered contact form (HTML5, CSS3, JavaScript).</p>
+                <span class="entry-link"><a href="https://kingatomheart.github.io/Portfolio-v2/" target="_blank" rel="noopener">kingatomheart.github.io/Portfolio-v2</a></span>
+            </div>
+
+            <div class="entry">
+                <div class="entry-head"><span class="entry-title">Also built</span></div>
+                <ul class="more-list">
+                    <li><b>Cramberry</b> — flashcard study app: monospace aesthetic, 3D flip animations, WASD/keyboard nav, file uploads, progress analytics. <a href="https://kingatomheart.github.io/Cramberry-Flashcard-App/" target="_blank" rel="noopener">link</a></li>
+                    <li><b>Quiz App</b> — adaptive difficulty, text-to-speech, weighted scoring, timers, exportable results. <a href="https://kingatomheart.github.io/quiz-app/" target="_blank" rel="noopener">link</a></li>
+                    <li><b>PlopBox</b> — HTML5 Canvas endless runner in vanilla JS: fixed-timestep loop, particle systems, 60 FPS via delta-time, Web Audio API. <a href="https://kingatomheart.github.io/PlopBox/" target="_blank" rel="noopener">link</a></li>
+                    <li><b>Spaceshooter</b> — HTML5 Canvas shooter: progressive stages, boss battles, particle effects, cross-platform controls. <a href="https://kingatomheart.github.io/SpaceShooting-Minigame/" target="_blank" rel="noopener">link</a></li>
+                    <li><b>Deus Ex Mechanica</b> — responsive single-page site (HTML5, CSS3, Bootstrap) for keyboard enthusiasts. <a href="https://kingatomheart.github.io/home-page-exam/" target="_blank" rel="noopener">link</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="r-section">
+            <h2>Education</h2>
+            <div class="entry">
+                <div class="entry-head">
+                    <span class="entry-title">Full-Stack Web Development (MERN)</span>
+                    <span class="entry-meta">Oct – Dec 2024</span>
+                </div>
+                <div class="entry-sub">Zuitt Tech Career Program</div>
+                <div style="margin-top:0.5rem">
+                    <div class="cw"><span class="cw-l">Programming Essentials</span><span class="cw-v">Git, Bash, Visual Studio Code</span></div>
+                    <div class="cw"><span class="cw-l">Front-End</span><span class="cw-v">HTML5, CSS3, Bootstrap, Figma (Wireframes &amp; Mockups), Chrome DevTools, GitHub Pages</span></div>
+                    <div class="cw"><span class="cw-l">Back-End</span><span class="cw-v">JavaScript (ES6+), Node.js, Express.js, MongoDB, RESTful APIs, Postman</span></div>
+                    <div class="cw"><span class="cw-l">Full-Stack</span><span class="cw-v">MERN Stack (MongoDB, Express.js, React.js, Node.js)</span></div>
+                    <div class="cw"><span class="cw-l">Tools &amp; Methodologies</span><span class="cw-v">Trello, SDLCs, Cloud Services</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="r-section">
+            <h2>Certifications</h2>
+            <div class="cert-list">
+                <div class="cert"><b>Full-Stack Web Development</b> — Zuitt <span>· Oct 2024 · FSC-0495-0006</span></div>
+                <div class="cert"><b>Back-End Web Development</b> — Zuitt <span>· Oct 2024 · BEC-0495-0006</span></div>
+                <div class="cert"><b>Front-End Web Development</b> — Zuitt</div>
+                <div class="cert"><b>Tech Career Program</b> — Zuitt <span>· Oct 2024 · DPC-0495-0006</span></div>
+                <div class="cert"><b>AWS Fundamentals</b> — Zuitt <span>· Feb 2025 · DPC-0536-0004</span></div>
+                <div class="cert"><b>AWS Serverless</b> — Zuitt <span>· Mar 2025 · DPC-0537-0004</span></div>
+                <div class="cert"><b>AWS Managed Services</b> — Zuitt <span>· Apr 2025 · DPC-0538-0004</span></div>
+                <div class="cert"><b>.NET (ASP.NET)</b> — Zuitt Coding Bootcamp</div>
+                <div class="cert"><b>Alteryx Designer Core</b> — Alteryx <span>· May 2025 – May 2027</span></div>
+                <div class="cert"><b>RPA Developer Foundation</b> — UiPath <span>· v2021.10</span></div>
+            </div>
+        </section>
+
+        <section class="r-section">
+            <h2>Experience</h2>
+            <div class="entry">
+                <div class="entry-head">
+                    <span class="entry-title">Production Personnel &amp; Quality Inspector</span>
+                    <span class="entry-meta">Dec 2022 – Jul 2025</span>
+                </div>
+                <div class="entry-sub">Hylife Foods Ltd. · Manitoba, Canada</div>
+                <ul>
+                    <li><strong>Attention to detail</strong> — quality inspections that reduced product errors; transfers to meticulous code review and debugging.</li>
+                    <li><strong>Process improvement</strong> — identified and implemented efficiency gains; a continuous-improvement mindset I apply to code performance and UI.</li>
+                    <li><strong>Analytical problem-solving</strong> — root-cause analysis and corrective actions, aligned with debugging and optimization in web development.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.getElementById('printBtn').addEventListener('click', function () { window.print(); });
+    </script>
+</body>
+</html>

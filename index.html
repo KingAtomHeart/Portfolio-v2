@@ -3,220 +3,759 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Luis Bamba — Business Analyst & Full-Stack Developer based in Neepawa, Manitoba. I bridge business requirements and technical solutions through data-driven analysis, MERN development, and process automation.">
+    <meta name="theme-color" content="#14110e">
+
+    <!-- Set JS flag + theme before first paint to prevent flashes -->
+    <script>
+        (function () {
+            var d = document.documentElement;
+            d.classList.add('has-js');
+            try {
+                var saved = localStorage.getItem('theme');
+                var prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+                if (saved === 'light' || (!saved && prefersLight)) d.classList.add('light-mode');
+            } catch (e) { /* ignore */ }
+        })();
+    </script>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Luis Bamba — Business Analyst & Developer">
+    <meta property="og:description" content="I turn business problems into working software. Business analysis, full-stack development, and process automation.">
+    <meta property="og:image" content="images/main.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..500&family=Inter:wght@400;500;600&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
-    <title>Luis - Portfolio</title>
+
+    <title>Luis Bamba — Business Analyst & Developer</title>
     <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
 <body>
-    <div class="scroll-progress"></div>
-    
-    <div class="bg-animation" id="bgAnimation"></div>
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <a href="#home" class="skip-link">Skip to content</a>
 
     <header id="header">
-        <a href="#" class="logo">Luis</a>
-        <nav id="nav">
-            <a href="#home" class="nav-link active">Home</a>
-            <a href="#services" class="nav-link">Services</a>
-            <a href="#skills" class="nav-link">Skills</a>
-            <a href="#experience" class="nav-link">Experience</a>
-            <a href="#contact" class="nav-link">Contact</a>
-                <!-- experimental -->
-                <div class="theme-toggle" id="themeToggle"></div>
-                <div class="floating-shapes">
-                    <div class="shape"></div>
-                    <div class="shape"></div>
-                    <div class="shape"></div>
-                </div>
-        <!-- experimental -->
-        </nav>
-        <div class="menu-toggle" id="menuToggle">
-            <i class="fas fa-bars"></i>
+        <div class="nav-inner">
+            <a href="#home" class="logo">Luis<span>.</span></a>
+
+            <nav id="nav" aria-label="Primary">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#work" class="nav-link">Work</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="resume.html" class="nav-resume" target="_blank" rel="noopener">Résumé</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme" title="Toggle theme">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                </button>
+                <a href="resume.html" class="btn btn-sm" target="_blank" rel="noopener">Résumé</a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </button>
+            </div>
         </div>
     </header>
 
-    <section class="home" id="home">
-        <div class="home-content">
-            <h1>Hi, I'm <span>Luis</span></h1>
-            <h3 class="typing-text">I'm a <span id="typingSpan">Business Analyst</span></h3>
-            <p>Business Analyst and Developer specializing in bridging the gap between business requirements and technical solutions. I transform complex business challenges into actionable insights and scalable applications through data-driven analysis and strategic development.</p>
-            <div class="social-icons">
-                <a href="https://www.linkedin.com/in/luis-gabriel-manalili-bamba-626747335/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/KingAtomHeart" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://community.alteryx.com/t5/user/viewprofilepage/user-id/707199" target="_blank" rel="noopener noreferrer" aria-label="Alteryx Community"><i class="fas fa-chart-bar"></i></a>
+    <main>
+        <!-- ============ HERO ============ -->
+        <section class="hero" id="home">
+            <div class="hero-inner">
+                <div class="hero-content">
+                    <span class="eyebrow">Full-Stack Web Developer</span>
+                    <h1>Hi, I'm <span class="accent">Luis</span> — I build full-stack web apps, from database to interface.</h1>
+                    <p class="hero-role">Currently working as a <span id="typingSpan" class="rotator">Full-Stack Developer</span></p>
+                    <p class="hero-desc">
+                        I'm a full-stack web developer specializing in the MERN stack. I build
+                        responsive, accessible web apps end to end — from Express/Node APIs and
+                        MongoDB data models to polished React interfaces — bringing an analytical,
+                        detail-first mindset carried over from a background in process and quality work.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#contact" class="btn">Let's work together</a>
+                        <a href="resume.html" class="btn btn-ghost" target="_blank" rel="noopener">
+                            <i class="fas fa-file-lines" aria-hidden="true"></i> View résumé
+                        </a>
+                    </div>
+
+                    <div class="hero-meta">
+                        <div class="social-icons">
+                            <a href="https://www.linkedin.com/in/luisbamba/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                            <a href="https://github.com/KingAtomHeart" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+                            <a href="https://community.alteryx.com/t5/user/viewprofilepage/user-id/707199" target="_blank" rel="noopener noreferrer" aria-label="Alteryx Community"><i class="fas fa-chart-bar" aria-hidden="true"></i></a>
+                        </div>
+                        <span class="availability"><span class="dot"></span> Available for opportunities</span>
+                    </div>
+                </div>
+
+                <div class="hero-img">
+                    <div class="hero-img-frame">
+                        <img src="images/main.jpg" alt="Portrait of Luis Bamba" loading="eager">
+                    </div>
+                </div>
             </div>
-            <a href="#contact" class="btn">Let's Work Together</a>
+        </section>
+
+        <!-- ============ ABOUT ============ -->
+        <section class="about" id="about">
+            <div class="section-inner">
+                <div class="section-head">
+                    <span class="eyebrow">01 — About</span>
+                    <h2 class="section-title">A bit about me</h2>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>
+                            I'm a full-stack web developer who builds for the web end to end —
+                            from REST APIs and data models to responsive, accessible React
+                            interfaces. Most of my time lives in the MERN stack: MongoDB,
+                            Express, React, and Node.
+                        </p>
+                        <p>
+                            My flagship project, OrigamiKeys, is a full-stack e-commerce platform
+                            with a server-persisted theming system, a group-buy ordering flow, and
+                            a drag-and-drop admin page builder. Around it I've shipped blog
+                            platforms, RESTful APIs, canvas games, and study tools — all in the
+                            work below.
+                        </p>
+                        <p>
+                            Based in Neepawa, Manitoba, I'm open to developer roles and freelance
+                            projects. I also bring an analytical, quality-focused mindset from
+                            earlier process and inspection work — handy for debugging and
+                            optimization.
+                        </p>
+                    </div>
+
+                    <aside class="about-facts">
+                        <div class="fact">
+                            <span class="fact-label">Location</span>
+                            <span class="fact-value">Neepawa, Manitoba, Canada</span>
+                        </div>
+                        <div class="fact">
+                            <span class="fact-label">Focus</span>
+                            <span class="fact-value">Full-Stack Web Development (MERN)</span>
+                        </div>
+                        <div class="fact">
+                            <span class="fact-label">Core stack</span>
+                            <span class="fact-value">React · Node · Express · MongoDB · AWS</span>
+                        </div>
+                        <div class="fact">
+                            <span class="fact-label">Availability</span>
+                            <span class="fact-value">Open to opportunities</span>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ WORK / PROJECTS ============ -->
+        <section class="work" id="work">
+            <div class="section-inner">
+                <div class="section-head">
+                    <span class="eyebrow">02 — Work</span>
+                    <h2 class="section-title">Selected projects</h2>
+                    <p class="section-sub">A few things I've built. <a href="#contact">Reach out</a> for a fuller walkthrough.</p>
+                </div>
+
+                <div class="work-grid">
+                    <article class="project-card featured">
+                        <div class="project-top">
+                            <div class="project-top-left">
+                                <span class="project-index">01</span>
+                                <span class="project-flag">Flagship</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://origamikeyscom.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Visit OrigamiKeys" title="Visit site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <h3>OrigamiKeys</h3>
+                        <span class="project-date">Mar 2026 – Present</span>
+                        <p>A full-stack e-commerce platform for a custom keyboard vendor, built with React and Node.js/Express on MongoDB (Mongoose). It features a site-wide theming system with four admin-selectable, server-persisted visual styles (independent of each visitor's light/dark mode), a group-buy ordering flow, an admin dashboard with a drag-and-drop landing-page builder for products and categories, and a checkout and address-management system — with a focus on accessible, theme-consistent UI, cross-theme color contrast, and typography.</p>
+                        <ul class="tech-tags">
+                            <li>React</li>
+                            <li>Node.js</li>
+                            <li>Express</li>
+                            <li>MongoDB</li>
+                            <li>Full-Stack</li>
+                            <li>E-Commerce</li>
+                        </ul>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-top">
+                            <span class="project-index">02</span>
+                            <div class="project-links">
+                                <a href="https://blog-app-client-opal.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Visit Mind Bloggling" title="Visit site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <h3>Mind Bloggling</h3>
+                        <p>A MERN-stack blog platform with full CRUD post management — a React, component-based front-end talking to an Express/Node REST API backed by MongoDB. Built and shipped with Postman, Vercel, and GitHub.</p>
+                        <ul class="tech-tags">
+                            <li>React</li>
+                            <li>Node.js</li>
+                            <li>Express</li>
+                            <li>MongoDB</li>
+                            <li>REST API</li>
+                        </ul>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-top">
+                            <span class="project-index">03</span>
+                        </div>
+                        <h3>Capstone 3 — Full-Stack E-Commerce (MERN)</h3>
+                        <span class="project-date">Dec 2024</span>
+                        <p>A full-stack MERN e-commerce platform: a React front-end with dynamic routing and state management, integrated APIs for server-side operations, deployed via AWS S3 static hosting.</p>
+                        <ul class="tech-tags">
+                            <li>React</li>
+                            <li>MERN</li>
+                            <li>AWS S3</li>
+                            <li>Full-Stack</li>
+                        </ul>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-top">
+                            <span class="project-index">04</span>
+                            <div class="project-links">
+                                <a href="https://tinyurl.com/ycy2sajm" target="_blank" rel="noopener noreferrer" aria-label="Visit Capstone 2 API" title="Visit site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <h3>Capstone 2 — Back-End E-Commerce API</h3>
+                        <span class="project-date">Nov 2024</span>
+                        <p>A back-end RESTful API for an e-commerce workflow — efficient data handling, secure transactions, and clean integration points for the front-end.</p>
+                        <ul class="tech-tags">
+                            <li>Node.js</li>
+                            <li>Express</li>
+                            <li>MongoDB</li>
+                            <li>REST API</li>
+                        </ul>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-top">
+                            <span class="project-index">05</span>
+                            <div class="project-links">
+                                <a href="https://kingatomheart.github.io/Portfolio-v2/" target="_blank" rel="noopener noreferrer" aria-label="Visit Developer Portfolio" title="Visit site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <h3>Front-End Capstone — Developer Portfolio</h3>
+                        <p>A responsive personal developer portfolio with a dark/light theme toggle, animated UI, and an EmailJS-powered contact form.</p>
+                        <ul class="tech-tags">
+                            <li>HTML5</li>
+                            <li>CSS3</li>
+                            <li>JavaScript</li>
+                            <li>EmailJS</li>
+                        </ul>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-top">
+                            <span class="project-index">06</span>
+                            <div class="project-links">
+                                <a href="https://tinyurl.com/5fdynn59" target="_blank" rel="noopener noreferrer" aria-label="View Cramberry sample" title="Sample"><i class="fas fa-eye" aria-hidden="true"></i></a>
+                                <a href="https://kingatomheart.github.io/Cramberry-Flashcard-App/" target="_blank" rel="noopener noreferrer" aria-label="Visit Cramberry" title="Visit site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <h3>Cramberry</h3>
+                        <p>A flashcard study app with a monospace design aesthetic, 3D flip animations, WASD/arrow-key navigation, a file-upload system, progress analytics, and adaptive review.</p>
+                        <ul class="tech-tags">
+                            <li>JavaScript</li>
+                            <li>CSS Animations</li>
+                            <li>DOM</li>
+                            <li>Responsive</li>
+                        </ul>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-top">
+                            <span class="project-index">07</span>
+                            <div class="project-links">
+                                <a href="https://bit.ly/anime-quiz-sample" target="_blank" rel="noopener noreferrer" aria-label="View Quiz App sample" title="Sample"><i class="fas fa-eye" aria-hidden="true"></i></a>
+                                <a href="https://kingatomheart.github.io/quiz-app/" target="_blank" rel="noopener noreferrer" aria-label="Visit Quiz App" title="Visit site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <h3>Quiz App</h3>
+                        <p>An adaptive-difficulty quiz platform with text-to-speech, color-coded difficulty tiers, weighted scoring, timed challenges, progress tracking, and exportable results.</p>
+                        <ul class="tech-tags">
+                            <li>JavaScript</li>
+                            <li>Text-to-Speech</li>
+                            <li>Responsive</li>
+                        </ul>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-top">
+                            <span class="project-index">08</span>
+                            <div class="project-links">
+                                <a href="https://kingatomheart.github.io/PlopBox/" target="_blank" rel="noopener noreferrer" aria-label="Visit PlopBox" title="Visit site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <h3>PlopBox</h3>
+                        <span class="project-date">Jul 2025 – Present</span>
+                        <p>An HTML5 Canvas endless runner in vanilla JS — a fixed-timestep game loop, particle systems, and state management with no external frameworks. Hits 60 FPS via delta-time, with progressive difficulty, multi-input support (touch/mouse/keyboard), a power-up system (Phaser mode + Time Slow with gem collection), and procedural audio through the Web Audio API.</p>
+                        <ul class="tech-tags">
+                            <li>JavaScript</li>
+                            <li>HTML5 Canvas</li>
+                            <li>Web Audio API</li>
+                        </ul>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-top">
+                            <span class="project-index">09</span>
+                            <div class="project-links">
+                                <a href="https://kingatomheart.github.io/SpaceShooting-Minigame/" target="_blank" rel="noopener noreferrer" aria-label="Visit Spaceshooter" title="Visit site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <h3>Spaceshooter</h3>
+                        <p>A responsive HTML5 Canvas space shooter with progressive difficulty stages, boss battles, particle effects, and desktop + mobile controls.</p>
+                        <ul class="tech-tags">
+                            <li>JavaScript</li>
+                            <li>HTML5 Canvas</li>
+                            <li>Responsive</li>
+                        </ul>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-top">
+                            <span class="project-index">10</span>
+                            <div class="project-links">
+                                <a href="https://kingatomheart.github.io/home-page-exam/" target="_blank" rel="noopener noreferrer" aria-label="Visit Deus Ex Mechanica" title="Visit site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <h3>Deus Ex Mechanica</h3>
+                        <p>A responsive single-page site (HTML5, CSS3, Bootstrap) for mechanical-keyboard enthusiasts — clean structured layouts, mobile-friendly, with organized navigation.</p>
+                        <ul class="tech-tags">
+                            <li>HTML5</li>
+                            <li>CSS3</li>
+                            <li>Bootstrap</li>
+                            <li>Responsive</li>
+                        </ul>
+                    </article>
+                </div>
+
+                <p class="work-note">More on my <a href="https://github.com/KingAtomHeart" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+            </div>
+        </section>
+
+        <!-- ============ SERVICES ============ -->
+        <section class="services" id="services">
+            <div class="section-inner">
+                <div class="section-head">
+                    <span class="eyebrow">03 — Services</span>
+                    <h2 class="section-title">What I do</h2>
+                </div>
+
+                <div class="service-grid">
+                    <article class="service-card">
+                        <i class="fas fa-code" aria-hidden="true"></i>
+                        <h3>Full-Stack Development</h3>
+                        <p>Building responsive, accessible web apps with the MERN stack — React front-ends, Express/Node REST APIs, and MongoDB data models, wired together cleanly end to end.</p>
+                    </article>
+                    <article class="service-card">
+                        <i class="fas fa-diagram-project" aria-hidden="true"></i>
+                        <h3>System Integration &amp; APIs</h3>
+                        <p>Designing scalable REST APIs with secure auth (JWT) and clean CRUD, then integrating systems so data flows reliably between front-end and back-end.</p>
+                    </article>
+                    <article class="service-card">
+                        <i class="fas fa-cloud" aria-hidden="true"></i>
+                        <h3>Cloud Solutions &amp; Deployment</h3>
+                        <p>Shipping to production on AWS (EC2, S3, Lambda, SNS, SQS) and Vercel — from static hosting to serverless functions and managed services.</p>
+                    </article>
+                    <article class="service-card">
+                        <i class="fas fa-chart-line" aria-hidden="true"></i>
+                        <h3>Business Analysis &amp; Requirements</h3>
+                        <p>Gathering, documenting, and analyzing requirements through stakeholder interviews, process mapping, and gap analysis — turned into clear specs and user stories.</p>
+                    </article>
+                    <article class="service-card">
+                        <i class="fas fa-robot" aria-hidden="true"></i>
+                        <h3>Process Automation &amp; RPA</h3>
+                        <p>Designing and implementing UiPath automations for repetitive processes, with the analysis up front to find the opportunities worth automating.</p>
+                    </article>
+                    <article class="service-card">
+                        <i class="fas fa-database" aria-hidden="true"></i>
+                        <h3>Data Analysis &amp; Insights</h3>
+                        <p>Building Alteryx workflows to prepare, cleanse, and transform data, plus reports and dashboards that support confident, data-driven decisions.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ SKILLS ============ -->
+        <section class="skills" id="skills">
+            <div class="section-inner">
+                <div class="section-head">
+                    <span class="eyebrow">04 — Skills</span>
+                    <h2 class="section-title">Technical toolkit</h2>
+                </div>
+
+                <div class="skills-grid">
+                    <div class="skill-group">
+                        <h3>Front-End</h3>
+                        <ul class="skill-list">
+                            <li>HTML5</li>
+                            <li>CSS3</li>
+                            <li>JavaScript (ES6+)</li>
+                            <li>React.js</li>
+                            <li>Responsive / Mobile-First</li>
+                            <li>Bootstrap</li>
+                            <li>Wireframing</li>
+                            <li>Figma</li>
+                            <li>Dark/Light Mode</li>
+                            <li>CSS Animations &amp; Transitions</li>
+                            <li>DOM Manipulation</li>
+                            <li>ARIA Standards</li>
+                            <li>Cross-Browser Compatibility</li>
+                            <li>Form Handling (EmailJS)</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Back-End</h3>
+                        <ul class="skill-list">
+                            <li>Node.js</li>
+                            <li>Express.js</li>
+                            <li>Python</li>
+                            <li>C#</li>
+                            <li>ASP.NET</li>
+                            <li>REST API Architecture</li>
+                            <li>CRUD Operations</li>
+                            <li>Server-Side Routing</li>
+                            <li>JWT Auth</li>
+                            <li>API Testing (Postman)</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Full-Stack</h3>
+                        <ul class="skill-list">
+                            <li>MERN Stack</li>
+                            <li>Full-Stack Architecture</li>
+                            <li>Component-Based Design</li>
+                            <li>Data Flow Management</li>
+                            <li>Cross-Functional Debugging</li>
+                            <li>SDLC</li>
+                            <li>Agile Collaboration</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Database &amp; Cloud</h3>
+                        <ul class="skill-list">
+                            <li>MongoDB (Mongoose)</li>
+                            <li>MySQL</li>
+                            <li>DynamoDB</li>
+                            <li>AWS (EC2, S3, Lambda, SNS, SQS)</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Tools</h3>
+                        <ul class="skill-list">
+                            <li>Git</li>
+                            <li>GitHub</li>
+                            <li>Vercel</li>
+                            <li>UiPath Studio</li>
+                            <li>Trello</li>
+                            <li>Alteryx</li>
+                            <li>Fusion 360</li>
+                            <li>Gamma</li>
+                            <li>IntelliJ IDEA</li>
+                            <li>HubSpot</li>
+                            <li>Replit</li>
+                            <li>MS Office</li>
+                            <li>Google Workspace</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Business Analysis</h3>
+                        <ul class="skill-list">
+                            <li>Requirements Gathering</li>
+                            <li>Process Mapping</li>
+                            <li>Gap Analysis</li>
+                            <li>User Stories</li>
+                            <li>Stakeholder Management</li>
+                            <li>Business Cases</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Data &amp; Analytics</h3>
+                        <ul class="skill-list">
+                            <li>Data Modeling</li>
+                            <li>ETL Processes</li>
+                            <li>SQL</li>
+                            <li>Dashboards</li>
+                            <li>Statistical Analysis</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ EXPERIENCE ============ -->
+        <section class="experience" id="experience">
+            <div class="section-inner">
+                <div class="section-head">
+                    <span class="eyebrow">05 — Experience</span>
+                    <h2 class="section-title">Where I've been</h2>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">Dec 2022 — Jul 2025</div>
+                        <div class="timeline-body">
+                            <h3>Production Personnel &amp; Quality Inspector</h3>
+                            <span class="timeline-org">Hylife Foods Ltd.</span>
+                            <ul class="timeline-points">
+                                <li><strong>Attention to detail</strong> — performed quality inspections that reduced product errors, a discipline that transfers directly to meticulous code review and debugging.</li>
+                                <li><strong>Process improvement</strong> — identified and implemented efficiency gains, reflecting a continuous-improvement mindset I apply to code performance and UI.</li>
+                                <li><strong>Analytical problem-solving</strong> — ran root-cause analyses and corrective actions, aligning with the debugging and optimization work in web development.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ EDUCATION ============ -->
+        <section class="education" id="education">
+            <div class="section-inner">
+                <div class="section-head">
+                    <span class="eyebrow">06 — Education</span>
+                    <h2 class="section-title">Education</h2>
+                </div>
+
+                <div class="education-card">
+                    <div class="education-date">Oct — Dec 2024</div>
+                    <div class="education-body">
+                        <h3>Full-Stack Web Development (MERN)</h3>
+                        <span class="timeline-org">Zuitt Tech Career Program</span>
+                        <p>An intensive full-stack program covering the MERN stack end to end. Built capstone projects including e-commerce apps with real business logic, user management, and data-driven dashboards — gaining hands-on experience in requirement analysis, system design, and agile delivery.</p>
+                        <div class="education-coursework">
+                            <div class="cw-row">
+                                <span class="cw-label">Programming Essentials</span>
+                                <span class="cw-items">Git, Bash, Visual Studio Code</span>
+                            </div>
+                            <div class="cw-row">
+                                <span class="cw-label">Front-End</span>
+                                <span class="cw-items">HTML5, CSS3, Bootstrap, Figma (Wireframes &amp; Mockups), Chrome DevTools, GitHub Pages</span>
+                            </div>
+                            <div class="cw-row">
+                                <span class="cw-label">Back-End</span>
+                                <span class="cw-items">JavaScript (ES6+), Node.js, Express.js, MongoDB, RESTful APIs, Postman</span>
+                            </div>
+                            <div class="cw-row">
+                                <span class="cw-label">Full-Stack</span>
+                                <span class="cw-items">MERN Stack (MongoDB, Express.js, React.js, Node.js)</span>
+                            </div>
+                            <div class="cw-row">
+                                <span class="cw-label">Tools &amp; Methodologies</span>
+                                <span class="cw-items">Trello, SDLCs, Cloud Services</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ CERTIFICATIONS ============ -->
+        <section class="certifications" id="certifications">
+            <div class="section-inner">
+                <div class="section-head">
+                    <span class="eyebrow">07 — Certifications</span>
+                    <h2 class="section-title">Certifications</h2>
+                </div>
+
+                <div class="cert-grid">
+                    <article class="cert-card">
+                        <i class="fas fa-graduation-cap cert-icon" aria-hidden="true"></i>
+                        <h3>Full-Stack Web Development</h3>
+                        <div class="cert-meta">Zuitt · Oct 2024</div>
+                        <div class="cert-cred">Credential ID: FSC-0495-0006</div>
+                    </article>
+
+                    <article class="cert-card">
+                        <i class="fas fa-server cert-icon" aria-hidden="true"></i>
+                        <h3>Back-End Web Development</h3>
+                        <div class="cert-meta">Zuitt · Oct 2024</div>
+                        <div class="cert-cred">Credential ID: BEC-0495-0006</div>
+                    </article>
+
+                    <article class="cert-card">
+                        <i class="fas fa-palette cert-icon" aria-hidden="true"></i>
+                        <h3>Front-End Web Development</h3>
+                        <div class="cert-meta">Zuitt</div>
+                    </article>
+
+                    <article class="cert-card">
+                        <i class="fab fa-aws cert-icon" aria-hidden="true"></i>
+                        <h3>AWS Fundamentals</h3>
+                        <div class="cert-meta">Zuitt · Feb 2025</div>
+                        <div class="cert-cred">Credential ID: DPC-0536-0004</div>
+                        <ul class="tech-tags">
+                            <li>Amazon EC2</li>
+                            <li>Amazon S3</li>
+                        </ul>
+                    </article>
+
+                    <article class="cert-card">
+                        <i class="fab fa-aws cert-icon" aria-hidden="true"></i>
+                        <h3>AWS Serverless</h3>
+                        <div class="cert-meta">Zuitt · Mar 2025</div>
+                        <div class="cert-cred">Credential ID: DPC-0537-0004</div>
+                        <ul class="tech-tags">
+                            <li>Amazon S3</li>
+                            <li>AWS Lambda</li>
+                            <li>+2 more</li>
+                        </ul>
+                    </article>
+
+                    <article class="cert-card">
+                        <i class="fab fa-aws cert-icon" aria-hidden="true"></i>
+                        <h3>AWS Managed Services</h3>
+                        <div class="cert-meta">Zuitt · Apr 2025</div>
+                        <div class="cert-cred">Credential ID: DPC-0538-0004</div>
+                        <ul class="tech-tags">
+                            <li>Amazon SNS</li>
+                            <li>Amazon SQS</li>
+                            <li>+1 more</li>
+                        </ul>
+                    </article>
+
+                    <article class="cert-card">
+                        <i class="fas fa-code cert-icon" aria-hidden="true"></i>
+                        <h3>.NET (ASP.NET)</h3>
+                        <div class="cert-meta">Zuitt Coding Bootcamp</div>
+                    </article>
+
+                    <article class="cert-card">
+                        <i class="fas fa-chart-bar cert-icon" aria-hidden="true"></i>
+                        <h3>Alteryx Designer Core</h3>
+                        <div class="cert-meta">Alteryx · May 2025 – May 2027</div>
+                    </article>
+
+                    <article class="cert-card">
+                        <i class="fas fa-robot cert-icon" aria-hidden="true"></i>
+                        <h3>RPA Developer Foundation</h3>
+                        <div class="cert-meta">UiPath · v2021.10</div>
+                    </article>
+
+                    <article class="cert-card">
+                        <i class="fas fa-certificate cert-icon" aria-hidden="true"></i>
+                        <h3>Tech Career Program</h3>
+                        <div class="cert-meta">Zuitt · Oct 2024</div>
+                        <div class="cert-cred">Credential ID: DPC-0495-0006</div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ CONTACT ============ -->
+        <section class="contact" id="contact">
+            <div class="section-inner">
+                <div class="section-head">
+                    <span class="eyebrow">08 — Contact</span>
+                    <h2 class="section-title">Let's build something</h2>
+                    <p class="section-sub">Have a project, a role, or just a question? I'd love to hear from you.</p>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <a class="contact-item" href="mailto:luisbamba02@gmail.com">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            <span>
+                                <span class="contact-label">Email</span>
+                                luisbamba02@gmail.com
+                            </span>
+                        </a>
+                        <a class="contact-item" href="tel:+12044630174">
+                            <i class="fas fa-phone" aria-hidden="true"></i>
+                            <span>
+                                <span class="contact-label">Phone</span>
+                                +1 204 463 0174
+                            </span>
+                        </a>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                            <span>
+                                <span class="contact-label">Location</span>
+                                Neepawa, Manitoba, Canada
+                            </span>
+                        </div>
+                        <a class="contact-item" href="https://www.linkedin.com/in/luisbamba/" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                            <span>
+                                <span class="contact-label">LinkedIn</span>
+                                /in/luisbamba
+                            </span>
+                        </a>
+                        <a class="contact-item" href="https://github.com/KingAtomHeart" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github" aria-hidden="true"></i>
+                            <span>
+                                <span class="contact-label">GitHub</span>
+                                /KingAtomHeart
+                            </span>
+                        </a>
+                    </div>
+
+                    <form class="contact-form" id="contactForm" novalidate>
+                        <div class="form-group">
+                            <label for="from_name">Name</label>
+                            <input type="text" id="from_name" name="from_name" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="from_email">Email</label>
+                            <input type="email" id="from_email" name="from_email" placeholder="you@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" placeholder="What's this about?" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Tell me a little about it…" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn" id="submitBtn">Send message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a href="#home" class="logo">Luis<span>.</span></a>
+                <p>Business Analyst &amp; Developer — turning business problems into working software.</p>
+            </div>
+            <nav class="footer-nav" aria-label="Footer">
+                <a href="#about">About</a>
+                <a href="#work">Work</a>
+                <a href="#services">Services</a>
+                <a href="#experience">Experience</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <div class="footer-social">
+                <a href="https://www.linkedin.com/in/luisbamba/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                <a href="https://github.com/KingAtomHeart" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+                <a href="https://community.alteryx.com/t5/user/viewprofilepage/user-id/707199" target="_blank" rel="noopener noreferrer" aria-label="Alteryx Community"><i class="fas fa-chart-bar" aria-hidden="true"></i></a>
+            </div>
         </div>
-        <div class="home-img">
-            <img src="images/main.jpg" alt="Luis Profile">
+        <div class="footer-bottom">
+            <span>&copy; <span id="year"></span> Luis Bamba. All rights reserved.</span>
+            <a href="#home" class="back-to-top">Back to top <i class="fas fa-arrow-up" aria-hidden="true"></i></a>
         </div>
-    </section>
+    </footer>
 
-    <section class="services" id="services">
-        <h2 class="section-title">My Services</h2>
-        <div class="service-container">
-            <div class="service-card">
-                <i class="fas fa-chart-line"></i>
-                <h3>Business Analysis & Requirements</h3>
-                <p>Gathering, documenting, and analyzing business requirements through stakeholder interviews, process mapping, and gap analysis to deliver comprehensive technical specifications and user stories.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-database"></i>
-                <h3>Data Analysis & Insights</h3>
-                <p>Creating data workflows in Alteryx for preparing, cleansing, and transforming datasets. Developing analytical reports and dashboards to support data-driven business decisions and process optimization.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-code"></i>
-                <h3>Full-Stack Development</h3>
-                <p>Developing business applications using the MERN stack (MongoDB, Express.js, React.js, Node.js), translating business requirements into functional web solutions with seamless API integration.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-robot"></i>
-                <h3>Process Automation & RPA</h3>
-                <p>Designing and implementing RPA solutions using UiPath to automate repetitive business processes, conducting process analysis to identify automation opportunities and improve operational efficiency.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-project-diagram"></i>
-                <h3>System Integration & APIs</h3>
-                <p>Creating scalable REST APIs and integrating business systems, ensuring seamless data flow between applications and optimizing system performance based on business needs.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-cloud"></i>
-                <h3>Cloud Solutions & Deployment</h3>
-                <p>Implementing cloud-based business solutions using AWS services (EC2, S3, Lambda, API Gateway), ensuring scalable infrastructure that aligns with business growth objectives.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="skills" id="skills">
-        <h2 class="section-title">Technical Skills</h2>
-        <div class="skills-container">
-            <div class="skill-category">
-                <h3>Business Analysis</h3>
-                <ul class="skill-list">
-                    <li>Requirements Gathering</li>
-                    <li>Process Mapping</li>
-                    <li>Gap Analysis</li>
-                    <li>User Stories</li>
-                    <li>Stakeholder Management</li>
-                    <li>Business Case Development</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3>Data & Analytics</h3>
-                <ul class="skill-list">
-                    <li>Alteryx</li>
-                    <li>Data Modeling</li>
-                    <li>ETL Processes</li>
-                    <li>SQL Queries</li>
-                    <li>Dashboard Creation</li>
-                    <li>Statistical Analysis</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3>Development</h3>
-                <ul class="skill-list">
-                    <li>JavaScript & React.js</li>
-                    <li>Node.js & Express.js</li>
-                    <li>Python</li>
-                    <li>REST API</li>
-                    <li>MongoDB & MySQL</li>
-                    <li>ASP.NET & C#</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3>Tools & Automation</h3>
-                <ul class="skill-list">
-                    <li>UiPath RPA</li>
-                    <li>AWS Cloud Services</li>
-                    <li>Git & GitHub</li>
-                    <li>Trello & Project Management</li>
-                    <li>Microsoft Office Suite</li>
-                    <li>Postman API Testing</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section class="experience" id="experience">
-        <h2 class="section-title">Professional Experience</h2>
-        <div class="experience-timeline">
-            <div class="timeline-item">
-                <h3>Full-Stack Web Development Student</h3>
-                <div class="date">Zuitt - Coding Bootcamp • Oct 2024 - Dec 2024</div>
-                <p>Completed an intensive full-stack development program with focus on translating business requirements into technical solutions. Developed multiple capstone projects including e-commerce applications with comprehensive business logic, user management systems, and data-driven dashboards. Gained expertise in requirement analysis, system design, and agile development methodologies.</p>
-            </div>
-            <div class="timeline-item">
-                <h3>Production Personnel & Quality Inspector</h3>
-                <div class="date">HyLife Foods Ltd. • Dec 2022 - Jul 2025</div>
-                <p>Analyzed production workflows and identified process improvement opportunities that enhanced operational efficiency by a significant margin. Conducted root cause analysis for quality issues and developed corrective action plans. Created data analysis workflows using Alteryx to optimize production processes and generate performance reports. Applied analytical problem-solving skills to streamline operations and reduce manual workload through process automation recommendations.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="contact" id="contact">
-  <h2 class="section-title">Get In Touch</h2>
-  <div class="contact-container">
-    <div class="contact-info">
-      <h3>Let's Connect</h3>
-      <div class="contact-item">
-        <i class="fas fa-envelope"></i>
-        <span>luisbamba02@gmail.com</span>
-      </div>
-      <div class="contact-item">
-        <i class="fas fa-phone"></i>
-        <span>+63 962 514 9553</span>
-      </div>
-      <div class="contact-item">
-        <i class="fas fa-map-marker-alt"></i>
-        <span>Central Luzon, Philippines</span>
-      </div>
-      <div class="contact-item">
-        <i class="fas fa-clock"></i>
-        <span>Available for projects</span>
-      </div>
-    </div>
-
-    <form class="contact-form" id="contactForm">
-      <div class="form-group">
-        <input type="text" name="from_name" placeholder="Your Name" required />
-      </div>
-      <div class="form-group">
-        <input type="email" name="from_email" placeholder="Your Email" required />
-      </div>
-      <div class="form-group">
-        <input type="text" name="subject" placeholder="Subject" required />
-      </div>
-      <div class="form-group">
-        <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
-      </div>
-      <button type="submit" class="btn" id="submitBtn">Send Message</button>
-    </form>
-  </div>
-
-  <!-- EmailJS SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script>
-    emailjs.init("5HzEOolObhPNTIq1h");
-
-    document.getElementById("contactForm").addEventListener("submit", function (event) {
-      event.preventDefault();
-
-      emailjs.sendForm("service_7k7n4bk", "template_vo40ohm", this).then(
-        function () {
-          alert("Message sent successfully!");
-          document.getElementById("contactForm").reset();
-        },
-        function (error) {
-          console.error("FAILED...", error);
-          alert("Something went wrong. Please try again.");
-        }
-      );
-    });
-  </script>
-</section>
-
-
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
