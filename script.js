@@ -204,7 +204,7 @@
     const form = document.getElementById('contactForm');
     const submitBtn = document.getElementById('submitBtn');
     const EMAILJS_PUBLIC_KEY = '5HzEOolObhPNTIq1h';
-    const EMAILJS_SERVICE = 'service_7k7n4bk';
+    const EMAILJS_SERVICE = 'service_juzdqpb';
     const EMAILJS_TEMPLATE = 'template_vo40ohm';
 
     if (window.emailjs) {
