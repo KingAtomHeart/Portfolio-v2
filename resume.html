@@ -139,6 +139,11 @@
             box-shadow: 0 10px 25px -12px var(--accent);
         }
         .print-btn:hover { filter: brightness(1.05); }
+        .print-btn.secondary {
+            color: var(--accent); background: transparent; border: 1px solid var(--accent);
+            box-shadow: none; margin-left: 0.5rem;
+        }
+        .print-btn.secondary:hover { background: rgba(0,0,0,0.03); filter: none; }
         .back-link { display: inline-flex; align-items: center; gap: 0.4rem; margin-left: 0.6rem; font-size: 0.85rem; color: var(--muted); }
 
         @media (max-width: 640px) {
@@ -188,7 +193,8 @@
 </head>
 <body>
     <div class="print-bar">
-        <button class="print-btn" id="printBtn"><i class="fas fa-print" aria-hidden="true"></i> Print / Save as PDF</button>
+        <a class="print-btn" href="resume.pdf" download="Luis-Bamba-Resume.pdf"><i class="fas fa-download" aria-hidden="true"></i> Download PDF</a>
+        <button class="print-btn secondary" id="printBtn"><i class="fas fa-print" aria-hidden="true"></i> Print</button>
         <a class="back-link" href="index.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Portfolio</a>
     </div>
 
