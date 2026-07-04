@@ -29,7 +29,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..500&family=Inter:wght@400;500;600&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="styles.css?v=20260701">
+    <link rel="stylesheet" href="styles.css?v=20260704">
 
     <title>Luis Bamba — Full-Stack Web Developer</title>
     <link rel="icon" type="image/png" href="images/favicon.png">
@@ -49,14 +49,14 @@
                 <a href="#services" class="nav-link">Services</a>
                 <a href="#experience" class="nav-link">Experience</a>
                 <a href="#contact" class="nav-link">Contact</a>
-                <a href="resume.html" class="nav-resume" target="_blank" rel="noopener">Résumé</a>
+                <a href="resume.html?v=20260704" class="nav-resume" target="_blank" rel="noopener">Résumé</a>
             </nav>
 
             <div class="nav-actions">
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme" title="Toggle theme">
                     <i class="fas fa-moon" aria-hidden="true"></i>
                 </button>
-                <a href="resume.html" class="btn btn-sm" target="_blank" rel="noopener">Résumé</a>
+                <a href="resume.html?v=20260704" class="btn btn-sm" target="_blank" rel="noopener">Résumé</a>
                 <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
                     <i class="fas fa-bars" aria-hidden="true"></i>
                 </button>
@@ -71,7 +71,7 @@
                 <div class="hero-content">
                     <span class="eyebrow">Full-Stack Web Developer</span>
                     <h1>Hi, I'm <span class="accent">Luis</span> — I build full-stack web apps, from database to interface.</h1>
-                    <p class="hero-role">Currently working as a <span id="typingSpan" class="rotator">Full-Stack Developer</span></p>
+                    <p class="hero-role">Open to work as a <span id="typingSpan" class="rotator">Full-Stack Developer</span></p>
                     <p class="hero-desc">
                         I'm a full-stack web developer specializing in the MERN stack. I build
                         responsive, accessible web apps end to end — from Express/Node APIs and
@@ -81,7 +81,7 @@
 
                     <div class="hero-actions">
                         <a href="#contact" class="btn">Let's work together</a>
-                        <a href="resume.html" class="btn btn-ghost" target="_blank" rel="noopener">
+                        <a href="resume.html?v=20260704" class="btn btn-ghost" target="_blank" rel="noopener">
                             <i class="fas fa-file-lines" aria-hidden="true"></i> View résumé
                         </a>
                     </div>
@@ -180,6 +180,10 @@
                         <h3>OrigamiKeys</h3>
                         <span class="project-date">Mar 2026 – Present</span>
                         <p>A full-stack e-commerce platform for a custom keyboard vendor, built with React and Node.js/Express on MongoDB (Mongoose). It features a site-wide theming system with four admin-selectable, server-persisted visual styles (independent of each visitor's light/dark mode), a group-buy ordering flow, an admin dashboard with a drag-and-drop landing-page builder for products and categories, and a checkout and address-management system — with a focus on accessible, theme-consistent UI, cross-theme color contrast, and typography.</p>
+                        <div class="project-note">
+                            <i class="fas fa-hourglass-half" aria-hidden="true"></i>
+                            <span>Backend is on Render's free tier — please allow ~30–60 seconds for it to wake up on first load.</span>
+                        </div>
                         <ul class="tech-tags">
                             <li>React</li>
                             <li>Node.js</li>
@@ -194,11 +198,89 @@
                         <div class="project-top">
                             <span class="project-index">02</span>
                             <div class="project-links">
+                                <a href="https://kingatomheart.github.io/Quiz-Site/" target="_blank" rel="noopener noreferrer" aria-label="Visit Quiz App" title="Visit site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <h3>Quiz App</h3>
+                        <p>An adaptive-difficulty quiz platform with text-to-speech, color-coded difficulty tiers, weighted scoring, timed challenges, progress tracking, and exportable results.</p>
+                        <div class="project-note">
+                            <i class="fas fa-circle-info" aria-hidden="true"></i>
+                            <span>To try it out, <a href="https://drive.google.com/file/d/10Oj3CzLw1MOhfpisPTPwcsbtvi5bUVhg/view?usp=drive_link" target="_blank" rel="noopener noreferrer">download the example file</a>, then import it into the quiz site.</span>
+                        </div>
+                        <ul class="tech-tags">
+                            <li>JavaScript</li>
+                            <li>Text-to-Speech</li>
+                            <li>Responsive</li>
+                        </ul>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-top">
+                            <span class="project-index">03</span>
+                            <div class="project-links">
+                                <a href="https://kingatomheart.github.io/Cramberry-Flashcard-App/" target="_blank" rel="noopener noreferrer" aria-label="Visit Cramberry" title="Visit site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <h3>Cramberry</h3>
+                        <p>A flashcard study app with a monospace design aesthetic, 3D flip animations, WASD/arrow-key navigation, a file-upload system, progress analytics, and adaptive review.</p>
+                        <div class="project-note">
+                            <i class="fas fa-circle-info" aria-hidden="true"></i>
+                            <span>To try it out, <a href="https://tinyurl.com/5fdynn59" target="_blank" rel="noopener noreferrer">download the example file</a>, then import it into Cramberry.</span>
+                        </div>
+                        <ul class="tech-tags">
+                            <li>JavaScript</li>
+                            <li>CSS Animations</li>
+                            <li>DOM</li>
+                            <li>Responsive</li>
+                        </ul>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-top">
+                            <span class="project-index">04</span>
+                            <div class="project-links">
+                                <a href="https://kingatomheart.github.io/PlopBox/" target="_blank" rel="noopener noreferrer" aria-label="Visit PlopBox" title="Visit site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <h3>PlopBox</h3>
+                        <span class="project-date">Jul 2025 – Present</span>
+                        <p>An HTML5 Canvas endless runner in vanilla JS — a fixed-timestep game loop, particle systems, and state management with no external frameworks. Hits 60 FPS via delta-time, with progressive difficulty, multi-input support (touch/mouse/keyboard), a power-up system (Phaser mode + Time Slow with gem collection), and procedural audio through the Web Audio API.</p>
+                        <ul class="tech-tags">
+                            <li>JavaScript</li>
+                            <li>HTML5 Canvas</li>
+                            <li>Web Audio API</li>
+                        </ul>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-top">
+                            <span class="project-index">05</span>
+                            <div class="project-links">
+                                <a href="https://kingatomheart.github.io/SpaceShooting-Minigame/" target="_blank" rel="noopener noreferrer" aria-label="Visit Spaceshooter" title="Visit site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <h3>Spaceshooter</h3>
+                        <p>A responsive HTML5 Canvas space shooter with progressive difficulty stages, boss battles, particle effects, and desktop + mobile controls.</p>
+                        <ul class="tech-tags">
+                            <li>JavaScript</li>
+                            <li>HTML5 Canvas</li>
+                            <li>Responsive</li>
+                        </ul>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-top">
+                            <span class="project-index">06</span>
+                            <div class="project-links">
                                 <a href="https://blog-app-client-opal.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Visit Mind Bloggling" title="Visit site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
                             </div>
                         </div>
                         <h3>Mind Bloggling</h3>
                         <p>A MERN-stack blog platform with full CRUD post management — a React, component-based front-end talking to an Express/Node REST API backed by MongoDB. Built and shipped with Postman, Vercel, and GitHub.</p>
+                        <div class="project-note">
+                            <i class="fas fa-hourglass-half" aria-hidden="true"></i>
+                            <span>Backend is on Render's free tier — please allow ~30–60 seconds for it to wake up on first load.</span>
+                        </div>
                         <ul class="tech-tags">
                             <li>React</li>
                             <li>Node.js</li>
@@ -210,7 +292,7 @@
 
                     <article class="project-card">
                         <div class="project-top">
-                            <span class="project-index">03</span>
+                            <span class="project-index">07</span>
                         </div>
                         <h3>Capstone 3 — Full-Stack E-Commerce (MERN)</h3>
                         <span class="project-date">Dec 2024</span>
@@ -225,7 +307,7 @@
 
                     <article class="project-card">
                         <div class="project-top">
-                            <span class="project-index">04</span>
+                            <span class="project-index">08</span>
                             <div class="project-links">
                                 <a href="https://tinyurl.com/ycy2sajm" target="_blank" rel="noopener noreferrer" aria-label="Visit Capstone 2 API" title="Visit site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
                             </div>
@@ -243,7 +325,7 @@
 
                     <article class="project-card">
                         <div class="project-top">
-                            <span class="project-index">05</span>
+                            <span class="project-index">09</span>
                             <div class="project-links">
                                 <a href="https://kingatomheart.github.io/Portfolio-v2/" target="_blank" rel="noopener noreferrer" aria-label="Visit Developer Portfolio" title="Visit site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
                             </div>
@@ -255,74 +337,6 @@
                             <li>CSS3</li>
                             <li>JavaScript</li>
                             <li>EmailJS</li>
-                        </ul>
-                    </article>
-
-                    <article class="project-card">
-                        <div class="project-top">
-                            <span class="project-index">06</span>
-                            <div class="project-links">
-                                <a href="https://tinyurl.com/5fdynn59" target="_blank" rel="noopener noreferrer" aria-label="View Cramberry sample" title="Sample"><i class="fas fa-eye" aria-hidden="true"></i></a>
-                                <a href="https://kingatomheart.github.io/Cramberry-Flashcard-App/" target="_blank" rel="noopener noreferrer" aria-label="Visit Cramberry" title="Visit site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                        <h3>Cramberry</h3>
-                        <p>A flashcard study app with a monospace design aesthetic, 3D flip animations, WASD/arrow-key navigation, a file-upload system, progress analytics, and adaptive review.</p>
-                        <ul class="tech-tags">
-                            <li>JavaScript</li>
-                            <li>CSS Animations</li>
-                            <li>DOM</li>
-                            <li>Responsive</li>
-                        </ul>
-                    </article>
-
-                    <article class="project-card">
-                        <div class="project-top">
-                            <span class="project-index">07</span>
-                            <div class="project-links">
-                                <a href="https://bit.ly/anime-quiz-sample" target="_blank" rel="noopener noreferrer" aria-label="View Quiz App sample" title="Sample"><i class="fas fa-eye" aria-hidden="true"></i></a>
-                                <a href="https://kingatomheart.github.io/quiz-app/" target="_blank" rel="noopener noreferrer" aria-label="Visit Quiz App" title="Visit site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                        <h3>Quiz App</h3>
-                        <p>An adaptive-difficulty quiz platform with text-to-speech, color-coded difficulty tiers, weighted scoring, timed challenges, progress tracking, and exportable results.</p>
-                        <ul class="tech-tags">
-                            <li>JavaScript</li>
-                            <li>Text-to-Speech</li>
-                            <li>Responsive</li>
-                        </ul>
-                    </article>
-
-                    <article class="project-card">
-                        <div class="project-top">
-                            <span class="project-index">08</span>
-                            <div class="project-links">
-                                <a href="https://kingatomheart.github.io/PlopBox/" target="_blank" rel="noopener noreferrer" aria-label="Visit PlopBox" title="Visit site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                        <h3>PlopBox</h3>
-                        <span class="project-date">Jul 2025 – Present</span>
-                        <p>An HTML5 Canvas endless runner in vanilla JS — a fixed-timestep game loop, particle systems, and state management with no external frameworks. Hits 60 FPS via delta-time, with progressive difficulty, multi-input support (touch/mouse/keyboard), a power-up system (Phaser mode + Time Slow with gem collection), and procedural audio through the Web Audio API.</p>
-                        <ul class="tech-tags">
-                            <li>JavaScript</li>
-                            <li>HTML5 Canvas</li>
-                            <li>Web Audio API</li>
-                        </ul>
-                    </article>
-
-                    <article class="project-card">
-                        <div class="project-top">
-                            <span class="project-index">09</span>
-                            <div class="project-links">
-                                <a href="https://kingatomheart.github.io/SpaceShooting-Minigame/" target="_blank" rel="noopener noreferrer" aria-label="Visit Spaceshooter" title="Visit site"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                        <h3>Spaceshooter</h3>
-                        <p>A responsive HTML5 Canvas space shooter with progressive difficulty stages, boss battles, particle effects, and desktop + mobile controls.</p>
-                        <ul class="tech-tags">
-                            <li>JavaScript</li>
-                            <li>HTML5 Canvas</li>
-                            <li>Responsive</li>
                         </ul>
                     </article>
 
@@ -756,6 +770,6 @@
 
     <!-- EmailJS SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script src="script.js?v=20260701"></script>
+    <script src="script.js?v=20260704"></script>
 </body>
 </html>

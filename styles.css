@@ -678,6 +678,41 @@ main > section + section .section-inner::before {
     max-width: 70ch;
 }
 
+.project-note {
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+    margin-top: 1.1rem;
+    padding: 0.7rem 0.85rem;
+    background: var(--accent-soft);
+    border-radius: 10px;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
+
+.project-note i {
+    color: var(--accent);
+    margin-top: 0.15rem;
+    flex-shrink: 0;
+    font-size: 0.85rem;
+}
+
+.project-note a {
+    color: var(--accent);
+    font-weight: 500;
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--transition);
+}
+
+.project-note a:hover {
+    border-color: var(--accent);
+}
+
+.project-card.featured .project-note {
+    max-width: 70ch;
+}
+
 .tech-tags {
     display: flex;
     flex-wrap: wrap;

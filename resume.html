@@ -91,10 +91,11 @@
 
         .r-summary { color: #332c25; font-size: 0.95rem; }
 
-        /* Skills */
-        .skill-line { display: grid; grid-template-columns: 11rem 1fr; gap: 0.6rem; padding: 0.28rem 0; font-size: 0.9rem; }
+        /* Skills — single column for ATS parsing */
+        .skill-line { padding: 0.3rem 0; font-size: 0.9rem; }
         .skill-line + .skill-line { border-top: 1px dashed var(--line); }
         .skill-cat { font-weight: 600; color: var(--accent); }
+        .skill-cat::after { content: ": "; }
         .skill-val { color: #33302b; }
 
         /* Entries (projects / experience / education) */
@@ -115,16 +116,16 @@
         .entry ul li strong { color: var(--ink); }
         .entry-link { font-size: 0.8rem; }
 
-        .more-list { font-size: 0.88rem; color: #40382f; }
-        .more-list li { margin-bottom: 0.3rem; list-style: none; padding-left: 1rem; position: relative; }
-        .more-list li::before { content: '▸'; position: absolute; left: 0; color: var(--accent); }
+        .more-list { font-size: 0.88rem; color: #40382f; margin: 0 0 0 1.1rem; list-style: disc; }
+        .more-list li { margin-bottom: 0.45rem; }
 
-        .cw { display: grid; grid-template-columns: 12rem 1fr; gap: 0.5rem; font-size: 0.85rem; padding: 0.2rem 0; }
+        .cw { font-size: 0.85rem; padding: 0.22rem 0; }
         .cw-l { font-weight: 600; color: var(--accent); }
+        .cw-l::after { content: ": "; }
         .cw-v { color: #40382f; }
 
-        /* Certifications */
-        .cert-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 1.6rem; }
+        /* Certifications — single column for ATS parsing */
+        .cert-list { display: grid; grid-template-columns: 1fr; gap: 0.45rem; }
         .cert { font-size: 0.87rem; page-break-inside: avoid; }
         .cert b { font-weight: 600; }
         .cert span { color: var(--muted); }
@@ -147,15 +148,41 @@
             .print-bar { position: static; padding: 1rem 1.4rem 0; }
         }
 
-        /* Print */
+        /* Print / PDF — compact, clean page breaks */
         @media print {
-            @page { margin: 14mm; }
-            body { background: #fff; font-size: 10.5pt; }
+            @page { margin: 12mm; }
+            html, body { background: #fff; }
+            body { font-size: 9.6pt; line-height: 1.38; }
             .sheet { margin: 0; max-width: none; padding: 0; border: none; border-radius: 0; box-shadow: none; }
             .print-bar { display: none; }
-            a { color: var(--ink); }
-            .r-contact a, .r-contact i, .skill-cat, .cw-l, .entry-sub { color: #000; }
-            .r-name, .r-section h2 { color: #000; }
+            a { color: #33302b; text-decoration: none; word-break: break-word; }
+
+            .r-header { padding-bottom: 0.6rem; margin-bottom: 0.75rem; }
+            .r-name { font-size: 1.9rem; }
+            .r-title { font-size: 0.92rem; margin-top: 0.2rem; }
+            .r-contact { margin-top: 0.45rem; gap: 0.15rem 0.9rem; font-size: 0.78rem; }
+
+            .r-section { margin-top: 0.8rem; }
+            .r-section h2 { font-size: 1rem; margin-bottom: 0.4rem; padding-bottom: 0.18rem; break-after: avoid; page-break-after: avoid; }
+            .r-summary { font-size: 0.84rem; }
+
+            .skill-line { padding: 0.14rem 0; font-size: 0.8rem; }
+
+            .entry { margin-bottom: 0.55rem; page-break-inside: avoid; }
+            .entry p { font-size: 0.8rem; margin-top: 0.12rem; }
+            .entry-title { font-size: 0.88rem; }
+            .entry-meta, .entry-link { font-size: 0.74rem; }
+            .entry-sub { font-size: 0.79rem; }
+            .entry ul li { font-size: 0.8rem; margin-bottom: 0.12rem; }
+
+            /* long "Also Built" list may break across pages, but keep each item whole */
+            .entry-wide { page-break-inside: auto; }
+            .more-list { font-size: 0.79rem; }
+            .more-list li { page-break-inside: avoid; margin-bottom: 0.28rem; }
+
+            .cw { font-size: 0.78rem; padding: 0.1rem 0; }
+            .cert-list { gap: 0.25rem; }
+            .cert { font-size: 0.79rem; }
         }
     </style>
 </head>
@@ -182,10 +209,11 @@
         <section class="r-section">
             <h2>Summary</h2>
             <p class="r-summary">
-                Full-stack web developer specializing in the MERN stack (MongoDB, Express, React, Node). I build
-                responsive, accessible web applications end to end — from REST APIs and data models to polished
-                React interfaces — and bring an analytical, detail-first mindset from a background in process and
-                quality work. Zuitt-trained, AWS-certified, and shipping projects continuously.
+                Full-stack web developer specializing in the MERN stack (MongoDB, Express, React, Node),
+                seeking a full-stack or front-end developer role. I build responsive, accessible web
+                applications end to end — from REST APIs and data models to polished React interfaces.
+                Zuitt-trained and AWS-certified, with a growing portfolio of shipped projects and an
+                analytical, detail-first mindset carried over from prior process and quality work.
             </p>
         </section>
 
@@ -204,11 +232,11 @@
 
             <div class="entry">
                 <div class="entry-head">
-                    <span class="entry-title">OrigamiKeys — Full-Stack E-Commerce Platform<span class="flag">Flagship</span></span>
+                    <span class="entry-title">OrigamiKeys — Full-Stack E-Commerce Platform</span>
                     <span class="entry-meta">Mar 2026 – Present</span>
                 </div>
                 <p>Full-stack e-commerce platform for a custom keyboard vendor (React, Node.js/Express, MongoDB/Mongoose). Site-wide theming system with four admin-selectable, server-persisted visual styles independent of each visitor's light/dark mode; a group-buy ordering flow; an admin dashboard with a drag-and-drop landing-page builder for products and categories; and a checkout/address-management system — built for accessible, theme-consistent UI.</p>
-                <span class="entry-link"><a href="https://origamikeyscom.vercel.app/" target="_blank" rel="noopener">origamikeyscom.vercel.app</a></span>
+                <span class="entry-link"><a href="https://origamikeyscom.vercel.app/" target="_blank" rel="noopener">https://origamikeyscom.vercel.app/</a> — backend on Render's free tier; allow ~30–60s to wake on first load.</span>
             </div>
 
             <div class="entry">
@@ -216,7 +244,7 @@
                     <span class="entry-title">Mind Bloggling — MERN Blog Platform</span>
                 </div>
                 <p>Full-stack blog platform with full CRUD post management: a React, component-based front-end talking to an Express/Node REST API backed by MongoDB. Built and shipped with Postman, Vercel, and GitHub.</p>
-                <span class="entry-link"><a href="https://blog-app-client-opal.vercel.app/" target="_blank" rel="noopener">blog-app-client-opal.vercel.app</a></span>
+                <span class="entry-link"><a href="https://blog-app-client-opal.vercel.app/" target="_blank" rel="noopener">https://blog-app-client-opal.vercel.app/</a> — backend on Render's free tier; allow ~30–60s to wake on first load.</span>
             </div>
 
             <div class="entry">
@@ -233,7 +261,7 @@
                     <span class="entry-meta">Nov 2024</span>
                 </div>
                 <p>Back-end RESTful API for an e-commerce workflow — efficient data handling, secure transactions, and clean integration points for the front-end.</p>
-                <span class="entry-link"><a href="https://tinyurl.com/ycy2sajm" target="_blank" rel="noopener">tinyurl.com/ycy2sajm</a></span>
+                <span class="entry-link"><a href="https://tinyurl.com/ycy2sajm" target="_blank" rel="noopener">https://tinyurl.com/ycy2sajm</a></span>
             </div>
 
             <div class="entry">
@@ -241,17 +269,24 @@
                     <span class="entry-title">Developer Portfolio — Front-End Capstone</span>
                 </div>
                 <p>Responsive personal portfolio with a dark/light theme toggle, animated UI, and an EmailJS-powered contact form (HTML5, CSS3, JavaScript).</p>
-                <span class="entry-link"><a href="https://kingatomheart.github.io/Portfolio-v2/" target="_blank" rel="noopener">kingatomheart.github.io/Portfolio-v2</a></span>
+                <span class="entry-link"><a href="https://kingatomheart.github.io/Portfolio-v2/" target="_blank" rel="noopener">https://kingatomheart.github.io/Portfolio-v2/</a></span>
             </div>
 
-            <div class="entry">
-                <div class="entry-head"><span class="entry-title">Also built</span></div>
+            <div class="entry entry-wide">
+                <div class="entry-head"><span class="entry-title">Also Built</span></div>
                 <ul class="more-list">
-                    <li><b>Cramberry</b> — flashcard study app: monospace aesthetic, 3D flip animations, WASD/keyboard nav, file uploads, progress analytics. <a href="https://kingatomheart.github.io/Cramberry-Flashcard-App/" target="_blank" rel="noopener">link</a></li>
-                    <li><b>Quiz App</b> — adaptive difficulty, text-to-speech, weighted scoring, timers, exportable results. <a href="https://kingatomheart.github.io/quiz-app/" target="_blank" rel="noopener">link</a></li>
-                    <li><b>PlopBox</b> — HTML5 Canvas endless runner in vanilla JS: fixed-timestep loop, particle systems, 60 FPS via delta-time, Web Audio API. <a href="https://kingatomheart.github.io/PlopBox/" target="_blank" rel="noopener">link</a></li>
-                    <li><b>Spaceshooter</b> — HTML5 Canvas shooter: progressive stages, boss battles, particle effects, cross-platform controls. <a href="https://kingatomheart.github.io/SpaceShooting-Minigame/" target="_blank" rel="noopener">link</a></li>
-                    <li><b>Deus Ex Mechanica</b> — responsive single-page site (HTML5, CSS3, Bootstrap) for keyboard enthusiasts. <a href="https://kingatomheart.github.io/home-page-exam/" target="_blank" rel="noopener">link</a></li>
+                    <li><b>Quiz App</b> — adaptive difficulty, text-to-speech, weighted scoring, timers, exportable results.<br>
+                        Site: <a href="https://kingatomheart.github.io/Quiz-Site/" target="_blank" rel="noopener">https://kingatomheart.github.io/Quiz-Site/</a><br>
+                        Example file (import to try): <a href="https://drive.google.com/file/d/10Oj3CzLw1MOhfpisPTPwcsbtvi5bUVhg/view?usp=drive_link" target="_blank" rel="noopener">https://drive.google.com/file/d/10Oj3CzLw1MOhfpisPTPwcsbtvi5bUVhg/view?usp=drive_link</a></li>
+                    <li><b>Cramberry</b> — flashcard study app: monospace aesthetic, 3D flip animations, WASD/keyboard nav, file uploads, progress analytics.<br>
+                        Site: <a href="https://kingatomheart.github.io/Cramberry-Flashcard-App/" target="_blank" rel="noopener">https://kingatomheart.github.io/Cramberry-Flashcard-App/</a><br>
+                        Example file (import to try): <a href="https://tinyurl.com/5fdynn59" target="_blank" rel="noopener">https://tinyurl.com/5fdynn59</a></li>
+                    <li><b>PlopBox</b> — HTML5 Canvas endless runner in vanilla JS: fixed-timestep loop, particle systems, 60 FPS via delta-time, Web Audio API.<br>
+                        <a href="https://kingatomheart.github.io/PlopBox/" target="_blank" rel="noopener">https://kingatomheart.github.io/PlopBox/</a></li>
+                    <li><b>Spaceshooter</b> — HTML5 Canvas shooter: progressive stages, boss battles, particle effects, cross-platform controls.<br>
+                        <a href="https://kingatomheart.github.io/SpaceShooting-Minigame/" target="_blank" rel="noopener">https://kingatomheart.github.io/SpaceShooting-Minigame/</a></li>
+                    <li><b>Deus Ex Mechanica</b> — responsive single-page site (HTML5, CSS3, Bootstrap) for keyboard enthusiasts.<br>
+                        <a href="https://kingatomheart.github.io/home-page-exam/" target="_blank" rel="noopener">https://kingatomheart.github.io/home-page-exam/</a></li>
                 </ul>
             </div>
         </section>
