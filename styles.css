@@ -579,6 +579,7 @@ main > section + section .section-inner::before {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1.5rem;
+    align-items: start; /* cards size to their content — no mid-card gaps */
 }
 
 .project-card {
@@ -637,7 +638,6 @@ main > section + section .section-inner::before {
 .project-card p {
     color: var(--text-muted);
     font-size: 0.98rem;
-    flex-grow: 1;
 }
 
 .project-top-left {
@@ -668,14 +668,42 @@ main > section + section .section-inner::before {
 .project-card.featured {
     grid-column: 1 / -1;
     border-color: color-mix(in srgb, var(--accent) 28%, var(--border));
+    background:
+        linear-gradient(180deg, var(--accent-soft), transparent 55%),
+        var(--surface);
 }
 
 .project-card.featured h3 {
     font-size: clamp(1.5rem, 1.2rem + 1vw, 2.1rem);
 }
 
-.project-card.featured > p {
-    max-width: 70ch;
+/* Two-column flagship layout: description | note + tags */
+.featured-body {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: clamp(1.6rem, 4vw, 3rem);
+    align-items: start;
+}
+
+.featured-side {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+.featured-side .project-note {
+    margin-top: 0;
+}
+
+.featured-side .tech-tags {
+    margin-top: 0;
+}
+
+@media (max-width: 720px) {
+    .featured-body {
+        grid-template-columns: 1fr;
+        gap: 1.3rem;
+    }
 }
 
 .project-note {
@@ -707,10 +735,6 @@ main > section + section .section-inner::before {
 
 .project-note a:hover {
     border-color: var(--accent);
-}
-
-.project-card.featured .project-note {
-    max-width: 70ch;
 }
 
 .tech-tags {
