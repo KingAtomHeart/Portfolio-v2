@@ -206,6 +206,7 @@
     const EMAILJS_PUBLIC_KEY = '5HzEOolObhPNTIq1h';
     const EMAILJS_SERVICE = 'service_juzdqpb';
     const EMAILJS_TEMPLATE = 'template_vo40ohm';
+    const EMAILJS_AUTOREPLY_TEMPLATE = 'template_as7wk2h';
 
     if (window.emailjs) {
         try { emailjs.init(EMAILJS_PUBLIC_KEY); } catch (e) { /* ignore */ }
@@ -250,6 +251,15 @@
             emailjs.sendForm(EMAILJS_SERVICE, EMAILJS_TEMPLATE, form)
                 .then(() => {
                     showToast("Thanks! Your message is on its way — I'll reply soon.", 'success');
+
+                    // Best-effort confirmation email back to the sender.
+                    emailjs.send(EMAILJS_SERVICE, EMAILJS_AUTOREPLY_TEMPLATE, {
+                        from_name: name,
+                        from_email: email,
+                        subject: subject,
+                        message: message
+                    }).catch((err) => console.warn('Auto-reply failed:', err));
+
                     form.reset();
                 })
                 .catch((err) => {
